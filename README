@@ -1,0 +1,52 @@
+DESCRIÇÃO DE REGRAS
+
+	Os textos e/ou palavras a serem formatados ficam sempre dentro dos caracteres especias demarcadores de alteração.
+	Para demarcar uma palavra, letra, trecho ou texto, o mesmo deve estar entre os demarcadores. São eles os seguintes:
+        *trecho* ------------> entre asteriscos para demarcar um trecho desejado em negrito
+		_trecho_ ------------> entre asteriscos para demarcar um trecho desejado em itálico
+		~trecho~ ------------> entre asteriscos para demarcar um trecho desejado em tachado
+		
+	Cada trecho alterado fica entre dois demarcadores iguais, um de entrada e um de saída. Existem regras para validar os demarcadores, são elas:
+		Com relação aos demarcadores de entrada:
+		 -não pode ter um caractere igual o antecendendo -> ex.: **trecho*
+		 -não pode haver letra o antecendendo -> ex.: a*trecho*
+		 -não pode pode ser antecedido por caractere especial se não os demarcadores(-~*) -> ex.: #*trecho*
+		 -não pode haver espaço após -> ex.: * trecho*
+		 
+		Com relação aos demarcadores de saída:
+		 -não pode ter letra após -> ex.: *trecho*a
+		 -não pode haver espaço o antecendendo -> ex.: *trecho *
+		 -não pode ter seu respectivo caractere de entrada entre dois demarcadores iguais ao mesmo tempo que que 
+			sucede o demarcador de saida. ex.: _*trecho_*
+
+DESCRIÇÃO DOS CARACTERES DE SUBSTITUIÇÂO
+	o algoritimo verificará o texto inserido em busca de demarcadores para retornar um texto formatado com a descrição de quais partes
+	teram que formatação. Uma vez que o algorito encontra um demarcador de entrada e outro de saída de acordo com as regras descritas acima,
+	ele substitui os demarcadores por tags indicando onde uma formatação deve começar e terminar. As tags são descritas abaixo:
+		*trecho* ------------> <b>trecho<b/> ----------->negrito
+		_trecho_ ------------> <i>trecho<i/> ----------->itálico
+		~trecho~ ------------> <c>trecho<c/> ----------->tachado
+DESCRIÇÃO DE CLASSES E METEDOS
+	
+	TestProjectApplication.class --> test_project\src\main\java\com\example\test_project\TestProjectApplication.java
+		main
+			//método princial
+	
+	TextFormatter.class --> test_project\src\main\java\com\example\test_project\TextFormatter.java
+		//classe que recebe o texto para ser editado
+		
+		format
+			//metodo responsável por validar as regras descritas no topico DESCRIÇÃO DE REGRAS e inserir as alterações pertinentes
+		textRebuild
+			//uma sabendo aonde as edições estão aplicadas, esse metodo reconstroi o texto formatado
+	
+	TextProjectApplicationTests.class --> test_project\src\test\java\com\example\test_project\TextProjectApplicationTests.java
+		//classe responsável pelos testes unitários
+		
+		assinalaOcorrencia
+			//aplica o texto com as demarcações desejadas e valida com o campo de texto esperado
+		
+		
+		
+		
+		
